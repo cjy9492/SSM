@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="ssm.dao.tempDao">
+
+    <select id="selectTempbyid" resultType="ssm.model.temp" parameterType="java.lang.String">
+        SELECT * FROM roomtemp WHERE id = #{id}
+    </select>
+    <select id="selectTempbyday" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT * FROM roomtemp WHERE <![CDATA[  DATE_FORMAT(date, '%Y-%m-%d') =  DATE_FORMAT(#{day}, '%Y-%m-%d')   ]]>
+    </select>
+</mapper>
